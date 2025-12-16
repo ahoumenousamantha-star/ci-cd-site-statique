@@ -7,29 +7,17 @@ on:
       - dev
 
 jobs:
-  build:
+  check-site:
     runs-on: ubuntu-latest
 
     steps:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Installer les dépendances (simulation)
+      - name: Vérifier que le site existe
         run: |
-          echo "Aucune dépendance à installer pour un site statique"
-
-      - name: Lancer les tests unitaires (simulation)
-        run: |
-          echo "Aucun test unitaire pour le moment"
-          echo "Tests OK ✅"
-
-      - name: Générer l'artefact
-        run: |
-          mkdir build
-          cp index.html build/
-
-      - name: Sauvegarder l'artefact
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-build
-          path: build
+          if [ ! -f docs/index.html ]; then
+            echo "❌ docs/index.html est manquant"
+            exit 1
+          fi
+          echo "✅ Site statique détecté"
