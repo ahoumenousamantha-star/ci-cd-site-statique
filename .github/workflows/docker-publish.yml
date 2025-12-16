@@ -1,8 +1,11 @@
 name: Docker Publish
 
+# Déclenche le workflow à chaque push sur main ou dev
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
+      - dev
 
 jobs:
   build-and-push:
