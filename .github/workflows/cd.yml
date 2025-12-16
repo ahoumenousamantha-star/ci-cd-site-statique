@@ -20,4 +20,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./       # Remplace par ./docs si tes fichiers sont dans docs/
+          publish_dir: ./docs      # Remplace par ./docs si tes fichiers sont dans docs/
